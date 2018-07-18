@@ -28,6 +28,7 @@ namespace Drips___Task_2
 
             // This extra ReadLine keeps the console window open while we admire our results.
             string dummy = Console.ReadLine();
+            int i = 0;
 
         }
     }
