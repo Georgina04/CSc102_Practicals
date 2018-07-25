@@ -19,6 +19,8 @@ namespace TaxesCalculator
 			Console.Write("What is your salary?");
 			string sal = Console.ReadLine();
 			int salary = Convert.ToInt32(sal);
+
+            Console.WriteLine();
             
             // The next few conditional statements find out what salary bracket the inputed salary lies in, and then 
             // uses age to determine what tax bracket he or she is in.
@@ -160,7 +162,8 @@ namespace TaxesCalculator
                 }
             }
 
-			
+            Console.WriteLine();
+            Console.WriteLine("Press Enter to Continue :)");
 		Console.ReadLine();
 		}
 	}
