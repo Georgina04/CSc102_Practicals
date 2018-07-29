@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A6EF9BEC-0C1E-4745-84CE-F4385252BC2B}</ProjectGuid>
+    <ProjectGuid>{9B9A60D1-9C7C-4CB0-B22F-C6BCF625F37D}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ChangeCalulator</RootNamespace>
-    <AssemblyName>ChangeCalulator</AssemblyName>
+    <RootNamespace>AdvancedTaxCalculator</RootNamespace>
+    <AssemblyName>AdvancedTaxCalculator</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -31,6 +31,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Compile Include="F:\CSC 112\G18f0243-Intro-Prac1.docx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
