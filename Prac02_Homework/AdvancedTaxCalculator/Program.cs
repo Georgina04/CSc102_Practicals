@@ -8,83 +8,213 @@ namespace AdvancedTaxCalculator
 {
     class Program
     {
-        static void Main(string[] args)
+        static int taxcalculation(int age, double salary)
         {
-            double av_sal = 0, av_age = 0, av_tax = 0;
-            int counter = 0;
-            int numElements = args.Length;
-            while (counter < numElements)
+
+            if (age >= 20 && age <= 100)
             {
-                string sal = Convert.ToString(args[counter]), ag = Convert.ToString(args[counter + 1]);
+                int tax = 0;
 
-                double salary, age;
-                if ((double.TryParse(sal, out salary)) && (double.TryParse(ag, out age)))
+                if ((salary >= 0) && (salary <= 4999))
                 {
-                    salary = Convert.ToDouble(sal);
-                    age = Convert.ToDouble(ag);
-                    if (((age < 20) || age > 100) && (salary < 0))
-                    {
-                        Console.WriteLine("Invalid entry \nPress enter to exit");
-                        Console.ReadLine();
-                    }
+                    tax = 0;
+                }
 
-                    else if (((salary < 10000) && (age > 65)) || (((salary < 5000) && (age < 65)))) { av_sal += 0; }
-                    else if (age < 65)
+                if ((salary >= 5000) && (salary <= 6499))
+                {
+                    if (age < 65)
                     {
-                        if (salary <= 6499) { av_sal += 13; }
-                        else if (salary <= 7799) { av_sal += 250; }
-                        else if (salary <= 9999) { av_sal += 620; }
-                        else if (salary <= 13499) { av_sal += 1200; }
-                        else if (salary <= 17899) { av_sal += 2100; }
-                        else if (salary <= 19999) { av_sal += 2700; }
-                        else if (salary <= 39999) { av_sal += 8000; }
-                        else if (salary <= 59999) { av_sal += 16000; }
-                        else { av_sal += 20000; }
-
-                    }
-
-                    else if (age <= 75)
-                    {
-                        if (salary <= 13499) { av_sal += 600; }
-                        else if (salary <= 17899) { av_sal += 1500; }
-                        else if (salary <= 19999) { av_sal += 2000; }
-                        else if (salary <= 39999) { av_sal += 7500; }
-                        else if (salary <= 59999) { av_sal += 15600; }
-                        else { av_sal += 17050; }
+                        tax = 13;
                     }
                     else
                     {
-                        if (salary <= 13499) { av_sal += 400; }
-                        else if (salary <= 17899) { av_sal += 1200; }
-                        else if (salary <= 19999) { av_sal += 1800; }
-                        else if (salary <= 39999) { av_sal += 7300; }
-                        else if (salary <= 59999) { av_sal += 15400; }
-                        else { av_sal += 17000; }
+                        tax = 0;
                     }
 
-                    av_tax += salary;
-                    av_age += age;
+                }
+
+                if ((salary >= 6500) && (salary <= 7799))
+                {
+                    if (age < 65)
+                    {
+                        tax = 250;
+                    }
+                    else
+                    {
+                        tax = 0;
+                    }
+                }
+
+                if ((salary >= 7800) && (salary <= 9999))
+                {
+                    if (age < 65)
+                    {
+                        tax = 620;
+                    }
+                    else
+                    {
+                        tax = 0;
+                    }
+                }
+
+                if ((salary >= 10000) && (salary <= 13499))
+                {
+                    if (age < 65)
+                    {
+                        tax = 1200;
+                    }
+                    else if ((age >= 65) && (age <= 75))
+                    {
+                        tax = 600;
+                    }
+                    else
+                    {
+                        tax = 400;
+                    }
+                }
+
+                if ((salary >= 13500) && (salary <= 17899))
+                {
+                    if (age < 65)
+                    {
+                        tax = 2100;
+                    }
+                    else if ((age >= 65) && (age <= 75))
+                    {
+                        tax = 1500;
+                    }
+                    else
+                    {
+                        tax = 1200;
+                    }
+                }
+
+                if ((salary >= 17900) && (salary <= 19999))
+                {
+                    if (age < 65)
+                    {
+                        tax = 2700;
+                    }
+                    else if ((age >= 65) && (age <= 75))
+                    {
+                        tax = 2000;
+                    }
+                    else
+                    {
+                        tax = 1800;
+                    }
+                }
+
+                if ((salary >= 20000) && (salary <= 39999))
+                {
+                    if (age < 65)
+                    {
+                        tax = 8000;
+                    }
+                    else if ((age >= 65) && (age <= 75))
+                    {
+                        tax = 7500;
+                    }
+                    else
+                    {
+                        tax = 7300;
+                    }
+                }
+
+                if ((salary >= 40000) && (salary <= 59999))
+                {
+                    if (age < 65)
+                    {
+                        tax = 16000;
+                    }
+                    else if ((age >= 65) && (age <= 75))
+                    {
+                        tax = 15600;
+                    }
+                    else
+                    {
+                        tax = 15400;
+                    }
+                }
+
+                else if (salary >= 60000)
+                {
+                    if (age < 65)
+                    {
+                        tax = 20000;
+                    }
+                    else if ((age >= 65) && (age <= 75))
+                    {
+                        tax = 17050;
+                    }
+                    else
+                    {
+                        tax = 17000;
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Invalid entry \nPress enter to exit");
-                    Console.ReadLine();
+                    Console.Write("This is not a valid salary");
+                    return -1;
                 }
 
-
-                counter += 2;
+                return tax;
             }
-            double print = (av_age / (numElements / 2));
-            Console.WriteLine("Average age of taxpayers is " + Math.Floor(av_age / (numElements / 2)));
-            Console.WriteLine("Average monthly salary R" + Math.Round(print, 2));
-            Console.WriteLine("Averege tax of taxpayesr is R" + (av_sal / (numElements / 2)));
-            Console.WriteLine();
-            Console.WriteLine("Press enter to exit");
+
+            else
+            {
+                Console.Write("This is not a valid age");
+                return -1;
+            }
+            
+        }
+
+        static void Main(string[] args)
+        {
+            int count = 0, agecount = 0, taxcount = 0, salcount = 0;
+            int age = 0, agesum = 0;
+            double sal = 0, salsum = 0, taxsum = 0;
+
+            while (count != args.Length)
+            {
+                if (args[count].Contains(",") == false)
+                {
+                    agesum += Convert.ToInt32(args[count]);
+                    agecount++;
+                    count++;
+                }
+
+                else
+                {
+                    salsum += Convert.ToDouble(args[count]);
+                    salcount++;
+                    count++; 
+                }
+            }
+
+            for (int i = 0; i < args.Length; i = i + 2)
+            {
+                sal = Convert.ToDouble(args[i]);
+                age = Convert.ToInt32(args[i + 1]);
+                int tax = taxcalculation(age, sal);
+
+                if (tax != -1)
+                {
+                    taxsum += tax;
+                    taxcount++;
+                }
+            }
+
+            int avage = agesum / agecount;
+            double avsal = salsum / salcount;
+            double avtax = taxsum / taxcount;
+
+            Console.Write("Average age of the taxpayers was {0}\nAverage salary of the taxpayers was R{1}\nAverage tax paid by the taxpayers was R{2}\n", avage, avsal, avtax);
+
+            Console.Write("Press Enter to continue . . .");
             Console.ReadLine();
-
-
 
         }
     }
-}
+} 
 
